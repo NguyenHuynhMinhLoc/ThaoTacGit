@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react-DOM render</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+</head>
+<body>
+    <!-- 
+        1. Tại sao phải sử dụng React-DOM
+        Để render React Element ra trình duyệt
+        là thư viện, cầu nối giữa React và DOM
+        cầu nối giúp React tạo được React Element -> Dùng element đó render vào DOM
+
+        React-Native -> iOS, Android
+
+        2. Tại sao lại tách React-DOM ra?
+        3. Render UI
+    -->
+    <div id="root"></div>
+
+    <script>
+        // React
+            const divReact = React.createElement(
+                'div',
+                {
+                    className: 'post-item'
+                },
+                React.createElement('h2', {title: 'Học React tại F8'}, 'Học ReactJS'),
+                React.createElement('p', {}, 'Học ReactJS từ cơ bản tới nâng cao')
+
+            )
+        
+        // Get root element
+        const root = document.getElementById('root');
+
+        // React-DOM -> Render UI
+       // ReactDOM.render(divReact, root)
+
+        const h1DOM = React.createElement(
+            'h1',
+            {
+                title: 'Hello',
+                className: 'heading'
+            },
+            'Hello guys!'
+        )
+        
+        //ReactDOM.render(h1DOM, root)
+
+        const ulReact = React.createElement(
+            'ul',
+            {},
+            React.createElement('li', {}, 'Javascript'),
+            React.createElement('li', {}, 'ReactJS'),
+        )
+
+        //ReactDOM.render(ulReact, root)
+        const root1 = ReactDOM.createRoot(root)
+        root1.render(ulReact)
+
+    </script>
+    
+</body>
+</html>
